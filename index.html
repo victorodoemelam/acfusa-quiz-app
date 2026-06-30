@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="African Christian Fellowship South Regional Conference 2026 Bible Quiz">
+    <title>ACF South Regional Conference 2026 Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main id="accessScreen" class="screen access-screen">
+        <section class="panel access-panel" aria-labelledby="welcomeTitle">
+            <p class="eyebrow">Welcome</p>
+            <h1 id="welcomeTitle">African Christian Fellowship</h1>
+            <p class="conference-name">South Regional Conference 2026</p>
+            <p>Enter Password to access the Quiz App</p>
+            <form id="accessForm">
+                <label for="passwordInput">Password</label>
+                <input id="passwordInput" type="password" inputmode="numeric" autocomplete="off" placeholder="Enter password" required autofocus>
+                <button type="submit" class="primary-button">Access Quiz</button>
+                <p id="accessError" class="form-error" role="alert" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <main id="categoryScreen" class="screen hidden">
+        <section class="page-shell">
+            <header class="page-header">
+                <p class="eyebrow">ACF South Regional Conference 2026</p>
+                <h1>Choose a Quiz Category</h1>
+                <p>Select the competition you are ready to begin.</p>
+            </header>
+            <div class="category-grid">
+                <button class="category-card junior" data-category="junior">
+                    <span class="category-number">01</span><strong>JUNIOR</strong><span>2 rounds • 25 questions each</span>
+                </button>
+                <button class="category-card varsity" data-category="varsity">
+                    <span class="category-number">02</span><strong>VARSITY</strong><span>2 rounds • 25 questions each</span>
+                </button>
+                <button class="category-card bonus" data-category="bonus">
+                    <span class="category-number">03</span><strong>BONUS ROUND</strong><span>5 tie-breaker questions</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <main id="roundScreen" class="screen hidden">
+        <section class="page-shell compact-shell">
+            <button class="back-button" data-action="categories">← Categories</button>
+            <header class="page-header">
+                <p id="roundEyebrow" class="eyebrow"></p>
+                <h1>Choose a Round</h1>
+                <p>Each round contains 25 questions with a balanced mix of difficulty levels.</p>
+            </header>
+            <div class="round-grid">
+                <button class="round-card" data-round="0"><span>Round</span><strong>1</strong><small>25 questions</small></button>
+                <button class="round-card" data-round="1"><span>Round</span><strong>2</strong><small>25 questions</small></button>
+            </div>
+        </section>
+    </main>
+
+    <main id="boardScreen" class="screen hidden">
+        <section class="board-shell">
+            <div class="board-toolbar">
+                <button class="back-button" data-action="rounds">← Back</button>
+                <div>
+                    <p id="boardEyebrow" class="eyebrow"></p>
+                    <h1 id="boardTitle"></h1>
+                </div>
+                <p id="boardProgress" class="progress-pill"></p>
+            </div>
+            <p class="board-instructions">Select a question card. Used questions stay marked.</p>
+            <div id="questionBoard" class="question-board"></div>
+        </section>
+    </main>
+
+    <div id="questionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="questionText">
+        <section class="modal-card">
+            <button id="closeModal" class="close-button" aria-label="Close question">×</button>
+            <div class="question-meta">
+                <span id="questionDifficulty"></span><span id="questionPoints"></span>
+            </div>
+            <p id="questionReference" class="question-reference"></p>
+            <h2 id="questionText"></h2>
+            <div id="timer" class="timer" aria-live="polite">15</div>
+            <button id="showAnswer" class="primary-button answer-button hidden">View Correct Answer</button>
+            <div id="answerBox" class="answer-box hidden">
+                <p>Correct Answer</p><strong id="answerText"></strong>
+            </div>
+        </section>
+    </div>
+
+    <script src="questions-source.js"></script>
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
