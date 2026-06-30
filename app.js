@@ -1,4 +1,4 @@
-const QUIZ_PASSWORD='2468';
+const QUIZ_PASSWORD='1986';
 const CATEGORY_NAMES={junior:'JUNIOR',varsity:'VARSITY',bonus:'BONUS ROUND'};
 const screens=[...document.querySelectorAll('.screen')];
 const usedQuestions=new Set();
@@ -160,7 +160,7 @@ function openQuestion(question,index){
 function startTimer(){
     clearInterval(countdownId);
     clearTimeout(answerDelayId);
-    let timeLeft=15;
+    let timeLeft=30;
     const timer=document.getElementById('timer');
     timer.textContent=timeLeft;
     timer.classList.remove('time-up');

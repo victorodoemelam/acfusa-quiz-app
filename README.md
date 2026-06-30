@@ -7,7 +7,7 @@ A browser-based Bible quiz for the African Christian Fellowship South Regional C
 - Junior: two balanced rounds of 25 questions
 - Varsity: two balanced rounds of 25 questions
 - Bonus Round: five tie-breaker questions
-- Fifteen-second question timer
+- Thirty-second question timer
 - Randomized, difficulty-balanced round assignment
 - Password access screen
 
