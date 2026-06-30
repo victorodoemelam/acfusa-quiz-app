@@ -1,4 +1,4 @@
-const QUIZ_PASSWORD='1986';
+const QUIZ_PASSWORD='2468';
 const CATEGORY_NAMES={junior:'JUNIOR',varsity:'VARSITY',bonus:'BONUS ROUND'};
 const screens=[...document.querySelectorAll('.screen')];
 const usedQuestions=new Set();
@@ -143,14 +143,25 @@ function updateProgress(){
     document.getElementById('boardProgress').textContent=used+' / '+currentQuestions.length+' used';
 }
 
+function getQuestionReference(question){
+    if(question.reference)return question.reference;
+    const text=question.question+' '+question.answer;
+    const references=[...text.matchAll(/\b(?:Matthew|Mark|Luke|John)\s+\d+\s*:\s*\d+(?:\s*[–—-]\s*\d+)?/gi)]
+        .map(match=>match[0].replace(/\s+/g,' ').replace(/\s*:\s*/,':'));
+    return [...new Set(references)].join('; ');
+}
+
 function openQuestion(question,index){
     usedQuestions.add(questionKey(index));
     renderBoard();
     document.getElementById('questionDifficulty').textContent=question.difficulty;
     document.getElementById('questionPoints').textContent=question.points+' points';
-    document.getElementById('questionReference').textContent=question.reference?'Reference: '+question.reference:'';
     document.getElementById('questionText').textContent=question.question;
     document.getElementById('answerText').textContent=question.answer;
+    const reference=getQuestionReference(question);
+    const answerReference=document.getElementById('answerReference');
+    answerReference.textContent=reference?'Bible Reference: '+reference:'';
+    answerReference.classList.toggle('hidden',!reference);
     document.getElementById('answerBox').classList.add('hidden');
     document.getElementById('showAnswer').classList.add('hidden');
     document.getElementById('questionModal').classList.remove('hidden');

@@ -39,7 +39,13 @@ function parseQuestionBlock(block){
 
 function parseBonusQuestions(section){
     const matches=[...normalizeText(section).matchAll(/([\s\S]*?Difficulty\s*:\s*HARD\s*[–—-]\s*20\s*Points)/gi)];
-    return matches.map((match,index)=>parseQuestionBlock((index+1)+'. '+match[1]));
+    return matches.map((match,index)=>{
+        const question=parseQuestionBlock((index+1)+'. '+match[1]);
+        question.question=question.question
+            .replace(/^BONUS ROUND\s*\([^)]*\)\s*/i,'')
+            .replace(/^•\s*/,'');
+        return question;
+    });
 }
 
 const varsityStart=RAW_QUESTION_SOURCE.indexOf('HARD and MEDIUM SET VARSITY');
