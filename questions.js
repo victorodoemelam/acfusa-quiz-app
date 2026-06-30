@@ -54,7 +54,10 @@ const bonusStart=RAW_QUESTION_SOURCE.indexOf('BONUS ROUND');
 
 const varsitySource=RAW_QUESTION_SOURCE.slice(varsityStart,juniorStart);
 const juniorSource=RAW_QUESTION_SOURCE.slice(juniorStart,bonusStart)
-    .replace(/(\n)[^\S\r\n]*(?:•[^\S\r\n]*)?“You have nothing to draw with/,(match,newline)=>newline+'4. “You have nothing to draw with');
+    .replace(/(\n)[^\S\r\n]*(?:•[^\S\r\n]*)?“You have nothing to draw with/,(match,newline)=>newline+'4. “You have nothing to draw with')
+    .replace(/(29\. Quote\s+Luke 4:18\s*—)\s*“\s*(?=\n)/i,'$1')
+    .replace(/((?:^|\n)\s*\d+\.\s*Quote\s*:?[ \t]+(?:Matthew|Mark|Luke|John)\s+\d+:\d+\s*—)\s*(\S[^\n]*)\n\s*Answer\s*[:;]\s*[^\n]*/gi,
+        (match,prompt,verse)=>prompt+'\nAnswer: '+verse);
 const bonusSource=RAW_QUESTION_SOURCE.slice(bonusStart);
 
 let VARSITY_QUESTIONS=splitNumberedQuestions(varsitySource).map(parseQuestionBlock);
