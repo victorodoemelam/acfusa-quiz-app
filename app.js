@@ -1,4 +1,4 @@
-const QUIZ_PASSWORD='2468';
+const QUIZ_PASSWORD='1986';
 const CATEGORY_NAMES={junior:'JUNIOR',varsity:'VARSITY',bonus:'BONUS ROUND'};
 const screens=[...document.querySelectorAll('.screen')];
 const usedQuestions=new Set();
